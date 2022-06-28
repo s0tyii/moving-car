@@ -5,14 +5,82 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Moving Car</title>
-     <link rel="stylesheet" href="./css/carstyle.css">
+     <link rel="stylesheet" href="./carstyle.css">
  </head>
  <body>
+     <style>
+         .surface {
+            height: 140px;
+            width: 500%;
+            background: url(./asset/Img_02.png);
+            display: block;
+            position: absolute;
+            bottom: 0%;
+            left: 0%;
+            background-repeat: repeat-x;
+            animation: moveRight 6s linear infinite;
+          }
+        .car {
+            position: absolute;
+            bottom: 8%;
+            /* left: 24%; */
+            /* animation: suspension 1s linear infinite; */
+        }
+        
+        @keyframes moveRight{
+            100% {transform: translateX(-2950px);}
+        }
+        @keyframes suspension{
+            100% {transform: translateY(-1px);}
+            50% {transform: translateY(2px);}
+            0% {transform: translateY(-1px);}
+        }
+
+     </style>
      <div class="night">
          <div class="surface"></div>
          <div class="car">
-             <img src="./asset/Img_06.png" alt="">
+            <img id="car" src="./asset/Img_06.png" alt="">
          </div>
+         
      </div>
+       <div  style="width: 40%;margin: auto;">
+           <button onclick="move()" style="margin-top: 10px;background-color: red;width: 20%;">start car</button>
+           <button onclick="speen()" style="margin-top: 10px;background-color: red;width: 20%;">add more speed</button>
+           <button onclick="stop()" style="margin-top: 10px;background-color: red;width: 20%;">stop the car</button>
+       </div>
+
+
+      
+     <script>
+         var  addSpeed = 2 
+         const  count = 0
+         var   ans  = null
+         var   increes  = null
+         var car = document.getElementById("car")
+   
+
+         function move(){
+            
+            ans =   addSpeed + count;
+        
+          console.log("car count check --->",ans, )
+         }
+         function speen(){
+              increes   =  ++addSpeed 
+              car.style.position = "absolute"
+              car.style.bottom = 30+"px"
+              car.style.left = increes+"px"
+              console.log("Add speed--->",increes, car)
+         }
+
+         function stop(){
+               increes =   0  
+               addSpeed   = 0
+              console.log("Add speed--->",increes,addSpeed )
+         }
+
+
+     </script>
  </body>
  </html>
